@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sistema Académico{% endblock %}</title>
+</head>
+<body>
+    <h1>📘 Sistema Académico</h1>
+    <nav>
+        <a href="{% url 'home' %}">Inicio</a> |
+        <a href="{% url 'nuevo_estudiante' %}">Registrar Estudiante</a> |
+        <a href="{% url 'nuevo_curso' %}">Crear Curso</a> |
+        <a href="{% url 'nuevo_examen' %}">Inscripción Examen</a> |
+        <a href="{% url 'buscar_estudiante' %}">Buscar Estudiante</a>
+    </nav>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
